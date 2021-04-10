@@ -10,8 +10,8 @@ import com.gameroom.data.game.scanner.*;
 import com.gameroom.data.game.scraper.IGDBScraper;
 import com.gameroom.data.http.images.ImageUtils;
 import com.gameroom.data.io.FileUtils;
-import edu.umd.cs.findbugs.annotations.NonNull;
-import edu.umd.cs.findbugs.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javafx.application.Platform;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -387,7 +387,7 @@ public class GameWatcher {
         return entriesToAdd;
     }
 
-    public GameButton onGameFound(@NonNull GameEntry foundEntry, @Nullable GameScanner scanner) {
+    public GameButton onGameFound(@Nonnull GameEntry foundEntry, @Nullable GameScanner scanner) {
         if (!GameEntryUtils.gameAlreadyIn(foundEntry, entriesToAdd) && !GameEntryUtils.isGameIgnored(foundEntry)) {
             if (!foundEntry.isInDb()) {
                 foundEntry.setAddedDate(LocalDateTime.now());

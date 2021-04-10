@@ -3,7 +3,7 @@ package com.gameroom.system.application;
 import com.gameroom.data.game.entry.Emulator;
 import com.gameroom.data.io.FileUtils;
 import com.gameroom.data.game.entry.GameEntry;
-import edu.umd.cs.findbugs.annotations.NonNull;
+import javax.annotation.Nonnull;
 import javafx.application.Platform;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -291,7 +291,7 @@ public class GameStarter {
         }
     }
 
-    @NonNull
+    @Nonnull
     private File getGameParentFolder() {
         com.gameroom.data.game.entry.Platform p = entry.getPlatform();
         if (p != null && !p.isPCLauncher()) {

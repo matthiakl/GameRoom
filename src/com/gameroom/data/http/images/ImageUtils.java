@@ -2,7 +2,7 @@ package com.gameroom.data.http.images;
 
 import com.gameroom.data.game.scraper.OnDLDoneHandler;
 import com.gameroom.data.http.SimpleImageInfo;
-import edu.umd.cs.findbugs.annotations.Nullable;
+import javax.annotation.Nullable;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

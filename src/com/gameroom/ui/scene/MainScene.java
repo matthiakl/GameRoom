@@ -104,7 +104,7 @@ public class MainScene extends BaseScene {
     private void initAll() {
         initCenter();
         initTop();
-        displayWelcomeMessage();
+       //displayWelcomeMessage();
         loadGames();
         configureAutomaticCaching();
         loadPreviousUIValues();

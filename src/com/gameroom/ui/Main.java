@@ -36,7 +36,7 @@ public class Main {
     public final static String ARGS_START_GAME = "-start-game";
 
     public static boolean DEV_MODE = false;
-    public static boolean SUPPORTER_MODE = false;
+    public final static boolean SUPPORTER_MODE = true;
     private static double TRUE_SCREEN_WIDTH;
     public static double TRUE_SCREEN_HEIGHT;
 
@@ -100,11 +100,7 @@ public class Main {
 
         settings(); //ensures settings are loaded
         Emulator.loadEmulators();
-
-        SUPPORTER_MODE = settings().getString(SUPPORTER_KEY) != null
-                && !settings().getString(SUPPORTER_KEY).isEmpty()
-                && !settings().getString(SUPPORTER_KEY).equals("")
-                && KeyChecker.isKeyValid(settings().getString(SUPPORTER_KEY));
+        
         LOGGER.info("Supporter mode : " + SUPPORTER_MODE);
         RESSOURCE_BUNDLE = ResourceBundle.getBundle("strings", settings().getLocale(PredefinedSetting.LOCALE));
         SETTINGS_BUNDLE = ResourceBundle.getBundle("settings", settings().getLocale(PredefinedSetting.LOCALE));

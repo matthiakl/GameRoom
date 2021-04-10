@@ -366,7 +366,7 @@ public class KeyChecker {
                     || supporterKey.equals("586be5b151ba0")
                     || supporterKey.equals("586d4c24d2ea2");
         }
-        Main.SUPPORTER_MODE = valid;
+        //Main.SUPPORTER_MODE = valid;
         return valid;
     }
 

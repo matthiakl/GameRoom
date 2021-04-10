@@ -370,7 +370,7 @@ public class SettingsScene extends BaseScene {
                     JSONObject response = KeyChecker.deactivateKey(settings().getString(PredefinedSetting.SUPPORTER_KEY));
                     if (response != null && response.getString(KeyChecker.FIELD_RESULT).equals(KeyChecker.RESULT_SUCCESS)) {
                         settings().setSettingValue(PredefinedSetting.SUPPORTER_KEY, "");
-                        SUPPORTER_MODE = false;
+                        // SUPPORTER_MODE = false;
                         String keyStatus1 = Main.SUPPORTER_MODE ? settings().getString(PredefinedSetting.SUPPORTER_KEY) : Main.getString("none");
                         String buttonText1 = Main.SUPPORTER_MODE ? Main.getString("deactivate") : Main.getString("activate");
                         actDeactButton.setText(buttonText1);
@@ -953,7 +953,7 @@ public class SettingsScene extends BaseScene {
                                 GameRoomAlert.info(message);
 
                                 settings().setSettingValue(PredefinedSetting.SUPPORTER_KEY, dialog.getSupporterKey());
-                                SUPPORTER_MODE = KeyChecker.isKeyValid(settings().getString(PredefinedSetting.SUPPORTER_KEY));
+                                // SUPPORTER_MODE = KeyChecker.isKeyValid(settings().getString(PredefinedSetting.SUPPORTER_KEY));
                                 String keyStatus = Main.SUPPORTER_MODE ? settings().getString(PredefinedSetting.SUPPORTER_KEY) : Main.getString("none");
                                 String buttonText = Main.SUPPORTER_MODE ? Main.getString("deactivate") : Main.getString("activate");
                                 if (actDeactButton != null) {

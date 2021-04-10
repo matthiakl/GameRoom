@@ -1,7 +1,7 @@
 package com.gameroom.data.io;
 
 import com.gameroom.Launcher;
-import edu.umd.cs.findbugs.annotations.NonNull;
+import javax.annotation.Nonnull;
 import com.gameroom.system.os.WindowsShortcut;
 import com.gameroom.ui.Main;
 
@@ -17,21 +17,21 @@ import java.util.regex.Pattern;
  */
 public class FileUtils {
 
-    @NonNull
-    public static File initOrCreateFolder(@NonNull File f) {
+    @Nonnull
+    public static File initOrCreateFolder(@Nonnull File f) {
         if (!f.exists()) {
             f.mkdirs();
         }
         return f;
     }
 
-    @NonNull
-    public static File initOrCreateFolder(@NonNull String f) {
+    @Nonnull
+    public static File initOrCreateFolder(@Nonnull String f) {
         return initOrCreateFolder(new File(f));
     }
 
-    @NonNull
-    private static File initOrCreateFile(@NonNull File f) {
+    @Nonnull
+    private static File initOrCreateFile(@Nonnull File f) {
         if (!f.exists()) {
             f.getParentFile().mkdirs();
             try {
@@ -48,7 +48,7 @@ public class FileUtils {
      * @param filename the name of the file to fetch, with extension and not, and can include subdirs of the temp folder
      * @return the temp file, whether it exists or not
      */
-    public static File getTempFile(@NonNull String filename) {
+    public static File getTempFile(@Nonnull String filename) {
         if (Main.FILES_MAP == null || Main.FILES_MAP.isEmpty()) {
             throw new IllegalStateException("Cannot get tempfile : FILE_MAP is not initialized");
         }
@@ -69,8 +69,8 @@ public class FileUtils {
      *                 created !
      * @return the initialized file, created if possible and non already existing
      */
-    @NonNull
-    public static File newTempFile(@NonNull String fileName) {
+    @Nonnull
+    public static File newTempFile(@Nonnull String fileName) {
         if (Main.FILES_MAP == null || Main.FILES_MAP.isEmpty()) {
             throw new IllegalStateException("Cannot create tempfile : FILE_MAP is not initialized");
         }
@@ -82,8 +82,8 @@ public class FileUtils {
         return initOrCreateFile(tempFolder.getAbsolutePath() + File.separator + fileName);
     }
 
-    @NonNull
-    public static File initOrCreateFile(@NonNull String f) {
+    @Nonnull
+    public static File initOrCreateFile(@Nonnull String f) {
         return initOrCreateFile(new File(f));
     }
 

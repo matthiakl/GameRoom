@@ -276,25 +276,7 @@ public class GeneralSettings {
     }
 
     public String getSupporterKeyPrice() {
-        String price = null;
-        try {
-            HttpResponse<JsonNode> response  = Unirest.get("https://gameroom.me/edd-api/products/?product=297")
-                    .header("Accept", "application/json")
-                    .asJson();
-                try {
-                    JSONArray array = response.getBody().getArray();
-                    price= response.getBody().getObject().getJSONArray("products")
-                            .getJSONObject(0)
-                            .getJSONObject("pricing")
-                            .getString("amount");
-                } catch (JSONException jse) {
-                    if (jse.toString().contains("not found")) {
-                        //Main.LOGGER.error("Serie not found");
-                    }
-                }
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
+        String price = "FREE";
         if(price != null){
             setSettingValue(SUPPORTER_KEY_PRICE,price);
         }

@@ -1,8 +1,7 @@
 package com.gameroom.system.device;
 
-import com.sun.istack.internal.Nullable;
 import com.gameroom.data.game.entry.GameEntryUtils;
-import edu.umd.cs.findbugs.annotations.NonNull;
+import javax.annotation.Nonnull;
 import com.gameroom.system.os.Terminal;
 
 import java.io.IOException;
@@ -40,7 +39,6 @@ public class StatsUtils {
      *
      * @return a comma separated list of GPUs
      */
-    @Nullable
     public static String getGPUNames() {
         Terminal t = new Terminal();
         StringJoiner joiner = new StringJoiner(",");
@@ -146,7 +144,7 @@ public class StatsUtils {
         }
     }
 
-    private static boolean isExcluded(String value, @NonNull String[] excludedPrefix) {
+    private static boolean isExcluded(String value, @Nonnull String[] excludedPrefix) {
         if (excludedPrefix.length == 0) {
             return false;
         }

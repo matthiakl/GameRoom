@@ -5,7 +5,7 @@ import com.gameroom.data.game.GameWatcher;
 import com.gameroom.data.game.scanner.FolderGameScanner;
 import com.gameroom.data.io.DataBase;
 import com.gameroom.ui.Main;
-import edu.umd.cs.findbugs.annotations.NonNull;
+import javax.annotation.Nonnull;
 
 import java.io.File;
 import java.sql.*;
@@ -310,7 +310,7 @@ public class GameEntryUtils {
      *
      * @param entries entries to consider as not to add anymore.
      */
-    public static boolean updateAsNotToAdd(@NonNull Collection<GameEntry> entries) {
+    public static boolean updateAsNotToAdd(@Nonnull Collection<GameEntry> entries) {
         StringJoiner joiner = new StringJoiner(",", "(", ")");
         for (GameEntry entry : entries) {
             if (entry != null) {

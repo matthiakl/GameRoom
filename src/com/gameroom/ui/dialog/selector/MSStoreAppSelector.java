@@ -11,7 +11,7 @@ import com.gameroom.ui.Main;
 import com.gameroom.ui.control.button.gamebutton.GameButton;
 import com.gameroom.ui.dialog.GameRoomDialog;
 import com.gameroom.ui.pane.SelectListPane;
-import edu.umd.cs.findbugs.annotations.NonNull;
+import javax.annotation.Nonnull;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ButtonBar;
@@ -119,7 +119,7 @@ public class MSStoreAppSelector extends GameRoomDialog<ButtonType> {
         private final static int IMAGE_HEIGHT = 64;
         private StackPane coverPane = new StackPane();
 
-        public MSStoreAppItem(@NonNull Object value, SelectListPane parentList) {
+        public MSStoreAppItem(@Nonnull Object value, SelectListPane parentList) {
             super(value, parentList);
             entry = ((MSStoreScraper.MSStoreEntry) value);
             addContent();

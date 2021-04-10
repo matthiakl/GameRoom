@@ -21,8 +21,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import org.apache.logging.log4j.LogManager;
-import org.boris.winrun4j.DDE;
-import org.boris.winrun4j.SplashScreen;
 import com.gameroom.system.application.Monitor;
 import com.gameroom.system.application.settings.PredefinedSetting;
 import com.gameroom.system.device.ControllerButtonListener;
@@ -74,8 +72,8 @@ public class Launcher extends Application {
     public static String DATA_PATH;
 
     public static void main(String[] args) throws URISyntaxException {
-        com.sun.javafx.application.PlatformImpl.startup(() -> {
-        });
+//        com.sun.javafx.application.PlatformImpl.startup(() -> {
+//        });
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -89,12 +87,6 @@ public class Launcher extends Application {
             DATA_PATH = appdataFolder + File.separator + System.getProperty("working.dir");
         } else {
             DATA_PATH = WinReg.readDataPath();
-        }
-
-        if (!DEV_MODE) {
-            SplashScreen.setTextColor(149, 156, 161);
-            SplashScreen.setTextFont("Arial", 8);
-            setSplashscreenText("Opening GameRoom");
         }
 
         System.setProperty("data.dir", DATA_PATH);
@@ -133,10 +125,6 @@ public class Launcher extends Application {
             Main.LOGGER.debug("\t\"" + arg + "\"");
         }
 
-        if (!DEV_MODE) {
-            DDE.addActivationListener(s -> open(MAIN_SCENE.getParentStage()));
-            DDE.ready();
-        }
         IGDBScraper.init();
 
         setSplashscreenText("Checking files...");
@@ -243,18 +231,15 @@ public class Launcher extends Application {
 
         MAIN_SCENE = new MainScene(primaryStage);
         initPrimaryStage(primaryStage, MAIN_SCENE);
-        initTrayIcon();
+       // FIXME initTrayIcon();
         initXboxController(primaryStage);
         setFullScreen(primaryStage, settings().getBoolean(PredefinedSetting.FULL_SCREEN));
 
-        if (!DEV_MODE) {
-            SplashScreen.close();
-        }
         openStage(primaryStage, true);
 
-        if (!DEV_MODE) {
+        //if (!DEV_MODE) {
             startUpdater();
-        }
+        //}
     }
 
     private void openStage(Stage primaryStage, boolean appStart) {
@@ -478,11 +463,7 @@ public class Launcher extends Application {
     }
 
     private static void setSplashscreenText(String text) {
-        if (!DEV_MODE) {
-            SplashScreen.setText(text, 5, 120);
-        } else {
-            LOGGER.info(text);
-        }
+        LOGGER.info(text);
     }
 
     private void initTrayIcon() {

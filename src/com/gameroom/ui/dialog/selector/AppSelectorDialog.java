@@ -16,7 +16,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import sun.awt.shell.ShellFolder;
 import com.gameroom.ui.Main;
 import com.gameroom.ui.dialog.GameRoomDialog;
 import com.gameroom.ui.pane.SelectListPane;

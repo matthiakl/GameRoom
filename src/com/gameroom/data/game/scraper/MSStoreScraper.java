@@ -6,7 +6,7 @@ import com.gameroom.data.game.entry.GameEntry;
 import com.gameroom.data.io.FileUtils;
 import com.gameroom.system.os.Terminal;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import edu.umd.cs.findbugs.annotations.NonNull;
+import javax.annotation.Nonnull;
 import javafx.scene.image.Image;
 import org.json.JSONArray;
 
@@ -67,7 +67,7 @@ public class MSStoreScraper {
      *
      * @param appFoundHandler callback function/interface to be called when an entry is found
      */
-    public static void getApps(@NonNull OnMSAppFoundHandler appFoundHandler) {
+    public static void getApps(@Nonnull OnMSAppFoundHandler appFoundHandler) {
         Terminal terminal = new Terminal(false);
         try {
             String[] result = terminal.executePowerShell("Get-AppxPackage | Select PackageFamilyName, InstallLocation");
