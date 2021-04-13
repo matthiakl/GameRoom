@@ -60,6 +60,10 @@ public class Terminal {
             //ArrayList<String> cmds = splitCMDLine(s);
             processBuilder.command().addAll(Arrays.asList("cmd.exe", "/c", "\"" + s + "\"", "&"));
         });
+        // FIXME Unix support
+        /*Arrays.stream(commands).forEach(s -> {
+            processBuilder.command().addAll(Arrays.asList("bash", "-c", "\"" + s + "\"", "&"));
+        });*/
         Process process = processBuilder.start();
         Main.getExecutorService().submit(() -> {
             try {
@@ -117,6 +121,7 @@ public class Terminal {
         ArrayList<String> commands = new ArrayList<String>();
 
         commands.addAll(Arrays.asList("cmd.exe", "/c", "chcp", "65001", "&", "cmd.exe", "/c", command));
+        //commands.addAll(Arrays.asList("bash", "-c", command));
         Collections.addAll(commands, args);
         processBuilder.command(commands);
 

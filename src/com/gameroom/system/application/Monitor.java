@@ -28,12 +28,10 @@ public class Monitor {
     private final static String TIME_TAG = "$$time$$";
 
     private final static String EXCEPTION_NOT_RUNNING = "Process not running";
-    private final static long MONITOR_AGAIN = -1;
 
-    private final static long MONITOR_REFRESH = TimeUnit.SECONDS.toMillis(1);
+    private final static long MONITOR_REFRESH = TimeUnit.SECONDS.toMillis(30);
     private final static long MAX_AWAIT_CREATION_TIME = TimeUnit.MINUTES.toMillis(2);
-    private final static long MAX_MONITOR_GAP_TIME = TimeUnit.SECONDS.toMillis(15);
-    private final static long MIN_MONITOR_TIME = TimeUnit.SECONDS.toMillis(20);
+    private final static long MAX_MONITOR_GAP_TIME = TimeUnit.MINUTES.toMillis(1);
 
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH);
     private static final DateFormat DEBUG_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
@@ -41,7 +39,6 @@ public class Monitor {
     private GameStarter gameStarter;
     private File vbsWatcher;
     private String timeWatcherCmd;
-    private boolean awaitingRestart = false;
 
     private volatile boolean stopMonitor = false;
 
