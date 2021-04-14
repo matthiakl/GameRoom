@@ -70,10 +70,14 @@
         <copy file="${dir.javafx}/lib/javafx.graphics.jar" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/lib/javafx.media.jar" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/lib/javafx.web.jar" todir="${dir.jarfile}/libs"/>
+        <copy file="${dir.javafx}/bin/fxplugins.dll" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/bin/glass.dll" todir="${dir.jarfile}/libs"/>
+        <copy file="${dir.javafx}/bin/glib-lite.dll" todir="${dir.jarfile}/libs"/>
+        <copy file="${dir.javafx}/bin/gstreamer-lite.dll" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/bin/javafx_font.dll" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/bin/javafx_iio.dll" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/bin/jfxmedia.dll" todir="${dir.jarfile}/libs"/>
+        <copy file="${dir.javafx}/bin/jfxwebkit.dll" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/bin/prism_common.dll" todir="${dir.jarfile}/libs"/>
         <copy file="${dir.javafx}/bin/prism_d3d.dll" todir="${dir.jarfile}/libs"/>
     </target>
