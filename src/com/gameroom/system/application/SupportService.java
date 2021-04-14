@@ -203,9 +203,9 @@ public class SupportService {
             if (settings() == null) {
                 return;
             }
-        /*if(DEV_MODE){
-            return;
-        }*/
+	        if(DEV_MODE){
+	            return;
+	        }
             Date installDate = settings().getDate(PredefinedSetting.INSTALL_DATE);
             Date lastPingDate = settings().getDate(PredefinedSetting.LAST_PING_DATE);
             long sinceInstall = System.currentTimeMillis() - installDate.getTime();

@@ -28,6 +28,7 @@ import com.gameroom.system.device.GameController;
 import com.gameroom.system.os.WinReg;
 import com.gameroom.ui.GeneralToast;
 import com.gameroom.ui.Main;
+import com.gameroom.ui.SplashScreen;
 import com.gameroom.ui.dialog.ConsoleOutputDialog;
 import com.gameroom.ui.dialog.WindowFocusManager;
 import com.gameroom.ui.scene.BaseScene;
@@ -58,6 +59,7 @@ public class Launcher extends Application {
     private final static double MIN_WINDOW_Y = 0;
 
     private int trayMessageCount = 0;
+    private static SplashScreen splash;
     private static ConsoleOutputDialog[] console = new ConsoleOutputDialog[1];
     private static boolean START_MINIMIZED = false;
     private static ChangeListener<Boolean> focusListener;
@@ -72,8 +74,7 @@ public class Launcher extends Application {
     public static String DATA_PATH;
 
     public static void main(String[] args) throws URISyntaxException {
-//        com.sun.javafx.application.PlatformImpl.startup(() -> {
-//        });
+    	splash = new SplashScreen();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -127,9 +128,9 @@ public class Launcher extends Application {
 
         IGDBScraper.init();
 
-        setSplashscreenText("Checking files...");
+        splash.progressUpdate(10, "Checking files...");
         initFiles();
-        setSplashscreenText("Initializing DB connection...");
+        splash.progressUpdate(20, "Initializing DB connection...");
         DataBase.ErrorReport report = DataBase.initDB();
         if (report.hasFailed()){
             GameRoomAlert.error(report.toString());
@@ -137,13 +138,13 @@ public class Launcher extends Application {
             System.exit(0);
             return;
         }
-        setSplashscreenText("Migrating settings...");
+        splash.progressUpdate(30, "Migrating settings...");
         OldSettings.transferOldSettings();
-        setSplashscreenText("Loading settings...");
+        splash.progressUpdate(60, "Loading settings...");
         Main.main(args);
-        setSplashscreenText("Migrating games...");
+        splash.progressUpdate(70, "Migrating games...");
         OldGameEntry.transferOldGameEntries();
-        setSplashscreenText("Loading games...");
+        splash.progressUpdate(80, "Loading games...");
         GameEntryUtils.loadGames();
 
         String gameToStartID = getArg(ARGS_START_GAME, args, true);
@@ -222,7 +223,7 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        setSplashscreenText("Configuring window...");
+    	splash.progressUpdate(90, "Configuring window...");
 
         primaryStage.setWidth(settings().getWindowWidth());
         primaryStage.setHeight(settings().getWindowHeight());
@@ -258,6 +259,7 @@ public class Launcher extends Application {
             }
             primaryStage.setIconified(true);
         } else {
+        	splash.progressUpdate(100, "Finishing..."); 
             primaryStage.show();
             primaryStage.toFront();
         }
@@ -460,10 +462,6 @@ public class Launcher extends Application {
         }
 
         System.exit(0);
-    }
-
-    private static void setSplashscreenText(String text) {
-        LOGGER.info(text);
     }
 
     private void initTrayIcon() {
